@@ -21,7 +21,10 @@ const config = {
   export const createUserProfileDocument = async (userAuth, additionalData) => {
       if(!userAuth) return;
 
+      // Gets a DocumentReference instance that refers to the document at the specified path.Parameter is documentpath
+      // and returns doc reference
       const userRef = firestore.doc(`users/${userAuth.uid}`);
+      // get() reads the document
       const snapShot = await userRef.get();
 
       if(!snapShot.exists)
